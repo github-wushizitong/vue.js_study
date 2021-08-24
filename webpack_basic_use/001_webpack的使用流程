@@ -1,0 +1,29 @@
+1,新建项目空白目录,并运行 npm init -y 命令,初始化包管理配置文件 package.json
+2,新建src源代码目录,放置程序员写的源代码
+3,新建 src -> index.html 首页和 src -> index.js 脚本文件
+4,初始化首页基本的结构
+5,运行 npm install jquery -S 命令,安装 jQuery,
+    {
+        -S
+        即 --save（保存）
+        包名会被注册在package.json的dependencies里面，在生产环境下这个包的依赖依然存在
+        -D -
+        即 --save-dev（生产）
+        包名会被注册在 package.json的devDependencies 里面，仅在开发环境下存在的包用-D，如 babel，sass-loader这些解析器
+    }
+6,通过ES6模块化导入jQuery,实现列表隔行变色效果
+7,在终端中运行 npm install webpack@5.42.1 webpack-cli@4.7.2 -D
+8,在项目中配置webpack:
+    {
+        1,在项目根目录中创建webpack.config.js的weibpack的配置文件,并初始化基本配置
+            module.exports={
+                // mode用来指定构建模式,可选值又 development(开发模式) 和 production(生产模式),开发模式追求打包速度,生产模式追求的打包体积大小
+                mode:'development'  
+            }
+        2,在package.json 中的 scripts 的节点下,新政 dev脚本如下:
+        "scripts":{
+            // script 节点下的脚本,可以通过 npm run 执行,例如 npm run dev
+            "dev":"webpack"  
+        }
+    }
+9,在终端中运行 npm run dev 命令,启动 weepack 进行项目的打包构建,构建好的 webpack 文件会自动生成项目根目录中的 dist 目录下面的 main.js ,包含了 js 中的代码和 jQuery中的代码
