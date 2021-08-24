@@ -19,14 +19,14 @@ eval("var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!\n * jQ
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
+/***/ "./webpack_source_code/index.js":
+/*!**************************************!*\
+  !*** ./webpack_source_code/index.js ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n// 1,使用ES6语法导入jQuery\r\n\r\n\r\n// 定义jQuery的入口函数\r\njquery__WEBPACK_IMPORTED_MODULE_0___default()(function(){\r\n    // 实现奇偶行变色\r\n    jquery__WEBPACK_IMPORTED_MODULE_0___default()('li:odd').css('background-color','red')\r\n    jquery__WEBPACK_IMPORTED_MODULE_0___default()('li:even').css('background-color','pink')\r\n})\n\n//# sourceURL=webpack://webpack_basic_use/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n// 1,使用ES6语法导入jQuery\r\n\r\n\r\n// 定义jQuery的入口函数\r\njquery__WEBPACK_IMPORTED_MODULE_0___default()(function(){\r\n    // 实现奇偶行变色\r\n    jquery__WEBPACK_IMPORTED_MODULE_0___default()('li:odd').css('background-color','red')\r\n    jquery__WEBPACK_IMPORTED_MODULE_0___default()('li:even').css('background-color','pink')\r\n})\n\n//# sourceURL=webpack://webpack_basic_use/./webpack_source_code/index.js?");
 
 /***/ })
 
@@ -102,7 +102,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jque
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./webpack_source_code/index.js");
 /******/ 	
 /******/ })()
 ;

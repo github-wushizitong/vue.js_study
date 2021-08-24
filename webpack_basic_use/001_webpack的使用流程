@@ -27,3 +27,21 @@
         }
     }
 9,在终端中运行 npm run dev 命令,启动 weepack 进行项目的打包构建,构建好的 webpack 文件会自动生成项目根目录中的 dist 目录下面的 main.js ,包含了 js 中的代码和 jQuery中的代码
+10,在 webpack 4.x 和 5.x 版本中,有如下默认约定:
+    {
+        1,默认的打包入口文件为 src -> index.js
+        2,默认的输出文件路径为 dist -> main.js
+        注意:可以在 webpack.config.js 中修改打包的默认约定      
+    }
+11,在 webpack.config.js 配置文件中, 通过 entry 节点指定打包入口文件,通过 output 节点指定打包出口的存放目录
+    {
+        const path = require('path');
+        module.exports = {
+            // 打包入口文件路径
+            entry : path.join(__dirname,'./src/index.js');
+            // 打包出口文件存放路径
+            output : path.join(__dirname,'./dist');
+            // 指定输出文件的名称
+            filename : 'bundle.js'
+        }
+    }
