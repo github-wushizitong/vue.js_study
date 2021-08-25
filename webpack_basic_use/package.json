@@ -5,17 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack":"webpack"
+    "webpack": "webpack"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "//": "生成环境的包",
   "dependencies": {
-    "jquery": "^3.6.0"
+    "jquery": "^3.6.0",
+    "lodash": "^4.17.21",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
   },
-  "devDependencies": {
-    "webpack": "^5.42.1",
-    "webpack-cli": "^4.7.2"
-  }
+  "devDependencies": {}
 }
