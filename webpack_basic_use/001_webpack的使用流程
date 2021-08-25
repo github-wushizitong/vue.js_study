@@ -188,3 +188,32 @@
                 limit 用来指定图片的大小,单位是字节(byte)
                 只有 <= limit 大小的图片,才会被转换为 base64 格式的图片
         }
+    6, 打包处理 js 文件中的高级语法
+        {
+            1, webpack 只能打包处理一部分高级的 JavaScript 语法,对于 webpack 无法处理的高级 js 语法,需要借助 babel-loader 进行打包处理.例如: js 的装饰器语法
+            2, 安装 babel-loader 相关的包,处理部分 js 高级语法
+                {
+                    1,运行如下的命令安装对应的依赖包
+                        {
+                            npm i babel-loader@8.2.2 @babel/core@7.14.6 @babel/plugin-proposal-decorators@7.14.5 -D
+                        
+                        }
+                    2, 在 webpack.config.js 的 module -> rules 数组中,添加 loader 规则:
+                    //  注意: 必须使用 exclude 指定排除项,因为 node_modules 目录下的第三方包不需要打包构建
+                        {
+                            test: /\.js$/,
+                            use: 'babel-loader',
+                            exclude: /node_modules/
+                        }
+                }
+            3,配置 babel-loader 
+                {
+                    1,在项目根目录下,创建 babel.config.js 的配置文件,定义 Babel 的配置项:
+                            module.exports = {
+                                // 声明 babel 可用的插件
+                                plugins : [['@abel/plugin-proposal-decorators,{legacy:true}]]
+                            }
+                }
+        }
+9, 配置 webpack 的打包发布
+    

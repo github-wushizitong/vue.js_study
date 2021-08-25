@@ -44,6 +44,11 @@ module.export = {
             {
                 test:/\.jpg|png|gif$/,
                 use: 'url-loader'
+            },
+            {
+                test: /\.js$/,
+                use: 'babel-loader',
+                exclude: /node_modules/
             }
         ]
     }
