@@ -154,3 +154,18 @@
             6, 当 style-loader 处理完毕之后,发现没有下一个 loader 了,于是就把处理结果,转交给了 webpack
             7, webpack 把 style-loader 处理的结果,合并到 /dist/bundle.js 中,最终生成打包号的文件
         }
+    4,打包处理 less 文件
+        {
+            1, 运行npm i less-loader less -D 命令
+            2, 在 webpack.config.js 的 module -> rules 数组中,添加 loader 的规则
+                {
+                    module: {
+                        rules :[
+                            {
+                                test:/.less$/,
+                                use:['style-loader','css-loader','less-loader']
+                            }
+                        ]
+                    }
+                }
+        }
