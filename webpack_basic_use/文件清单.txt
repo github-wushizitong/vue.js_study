@@ -1,0 +1,21 @@
+dist :{
+    webpack 自动生成的打包构建好的项目文件
+}
+node_modules :{
+    npm 下载的包和包的依赖
+}
+src :{
+    webpack 需要的入口文件目录(自己写的源代码)
+}
+package-lock.json :{
+    npm 锁定安装时的包的版本号，并且需要上传到git，以保证其他人在npm install时大家的依赖能保证一致。
+}
+package.json :{
+    package.json文件会描述这个NPM包的所有相关信息，包括作者、简介、包依赖、构建等信息，格式是严格的JSON格式。
+}
+webpack.config.js :{
+    webpack的配置文件
+}
+.gitignore :{
+    git的配置文件
+}
