@@ -38,6 +38,12 @@ module.export = {
             {
                 test:/\.less$/,
                 use: ['style-loader','css-loader','less-loader']
+            },
+            // 处理图片文件的 loader
+            // 如果需要调用的loader 只有一个,则只传递一个字符串,如果多个,需要用数组
+            {
+                test:/\.jpg|png|gif$/,
+                use: 'url-loader'
             }
         ]
     }
