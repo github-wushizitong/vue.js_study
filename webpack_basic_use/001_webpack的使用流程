@@ -89,3 +89,17 @@
                 5,注意:自动生成的文件存放在了内存当中,可以直接使用根目录访问index.html
             }
     }
+13, devServer 节点
+    {
+        1,在 webpack.config.js 配置文件中,通过 devServer 节点对 webpack-dev-server 插件进行更多配置
+            {
+                devServer: {
+                    // 初次打包完成后,自动打开浏览器
+                    open: true,
+                    // 实时打包所使用的主机地址
+                    host: '127.0.0.1',
+                    // 实时打包所使用的端口号
+                    port: 80
+                }
+            }
+    }
