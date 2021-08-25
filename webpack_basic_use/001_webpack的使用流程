@@ -56,11 +56,12 @@
                     {
                         1,修改 package.json -> scripts 中的 dev 命令如下
                             "scripts" : {
-                                "dev" : "webpack server"
+                                "dev" : "webpack serve"
                             }
                         2,再次运行 npm run dev 命令,重新进行项目的打包
                         3,在浏览器中访问 http://localhost:8080 地址,查看自动打包效果
                         4,注意: webpack-dev-server 会启动一个实时打包的 http 服务器
+                        5,注意: webpack-dev-server 生成的文件在内存中,需要在html文件中改变script src 的引入路径为 webpack-dev-server 提示的根目录 /
                     }
             }
         2, html-webpack-plugin
