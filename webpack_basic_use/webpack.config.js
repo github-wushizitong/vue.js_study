@@ -6,7 +6,7 @@ const htmlWebpackPlugin = new HtmlWebPackPlugin({
     // 指定源文件的存放路径
     template: './src/index.html',
     // 指定生成的文件存放路径(在内存中生成)
-    filename: 'index.html'
+    filename: './index.html'
 })
 module.export = {
     mode:'development',
@@ -15,7 +15,8 @@ module.export = {
     // 打包出口文件存放路径
     output : {
         path: path.join(__dirname,'dist'),
-        publicPath: './dist'
+        // 生成的文件名称
+        filename:'bundle.js'
     },
     // 把插件挂载到 webpack(使用插件),在webpack 运行的时候,会加载并且调用这些插件
     plugins: [htmlWebpackPlugin],
@@ -26,5 +27,14 @@ module.export = {
         host:'127.0.0.1',
         // 实时打包所使用的端口号
         port:80
+    },
+    module: {
+        rules: [
+            // 定义了不同模块对应的 loader 
+            {
+                test: /\.css$/,
+                use:['style-loader','css-loader']
+            }
+        ]
     }
 }

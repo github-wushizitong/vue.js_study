@@ -1,39 +1,47 @@
-1,新建项目空白目录,并运行 npm init -y 命令,初始化包管理配置文件 package.json
-2,新建src源代码目录,放置程序员写的源代码
-3,新建 src -> index.html 首页和 src -> index.js 脚本文件
-4,初始化首页基本的结构
-5,运行 npm install jquery -S 命令,安装 jQuery,
+1, 搭建 webpack 的目录树
     {
-        -S
-        即 --save（保存）
-        包名会被注册在package.json的dependencies里面，在生产环境下这个包的依赖依然存在
-        -D -
-        即 --save-dev（生产）
-        包名会被注册在 package.json的devDependencies 里面，仅在开发环境下存在的包用-D，如 babel，sass-loader这些解析器
+        1,新建项目空白目录,并运行 npm init -y 命令,初始化包管理配置文件 package.json
+        2,新建src源代码目录,放置程序员写的源代码
+        3,新建 src -> index.html 首页和 src -> index.js 脚本文件
+        4,初始化首页基本的结构
     }
-6,通过ES6模块化导入jQuery,实现列表隔行变色效果
-7,在终端中运行 npm install webpack@5.42.1 webpack-cli@4.7.2 -D
-8,在项目中配置webpack:
+2, 安装 jQuery 实现隔行变色效果:
     {
-        1,在项目根目录中创建webpack.config.js的weibpack的配置文件,并初始化基本配置
-            module.exports={
-                // mode用来指定构建模式,可选值又 development(开发模式) 和 production(生产模式),开发模式追求打包速度,生产模式追求的打包体积大小
-                mode:'development'  
+        1, 运行 npm install jquery -S 命令,安装 jQuery,
+            {
+                -S
+                即 --save（保存）
+                包名会被注册在package.json的dependencies里面，在生产环境下这个包的依赖依然存在
+                -D -
+                即 --save-dev（生产）
+                包名会被注册在 package.json的devDependencies 里面，仅在开发环境下存在的包用-D，如 babel，sass-loader这些解析器
             }
-        2,在package.json 中的 scripts 的节点下,新政 dev脚本如下:
-        "scripts":{
-            // script 节点下的脚本,可以通过 npm run 执行,例如 npm run dev
-            "dev":"webpack"  
-        }
     }
-9,在终端中运行 npm run dev 命令,启动 weepack 进行项目的打包构建,构建好的 webpack 文件会自动生成项目根目录中的 dist 目录下面的 main.js ,包含了 js 中的代码和 jQuery中的代码
-10,在 webpack 4.x 和 5.x 版本中,有如下默认约定:
+3, 安装并且配置和使用 webpack webpack-cli第三方模块:
+    {
+        1, 在终端中运行 npm install webpack@5.42.1 webpack-cli@4.7.2 -D
+        2, 在项目中配置webpack:
+            {
+                1, 在项目根目录中创建webpack.config.js的weibpack的配置文件,并初始化基本配置
+                    module.exports={
+                        // mode用来指定构建模式,可选值又 development(开发模式) 和 production(生产模式),开发模式追求打包速度,生产模式追求的打包体积大小
+                        mode:'development'  
+                    }
+                2, 在package.json 中的 scripts 的节点下,新政 dev脚本如下:
+                "scripts":{
+                    // script 节点下的脚本,可以通过 npm run 执行,例如 npm run dev
+                    "dev":"webpack"  
+                }
+            }
+        3, 在终端中运行 npm run dev 命令,启动 weepack 进行项目的打包构建,构建好的 webpack 文件会自动生成项目根目录中的 dist 目录下面的 main.js ,包含了 js 中的代码和 jQuery中的代码
+    }
+4,在 webpack 4.x 和 5.x 版本中,有如下默认约定:
     {
         1,默认的打包入口文件为 src -> index.js
         2,默认的输出文件路径为 dist -> main.js
         注意:可以在 webpack.config.js 中修改打包的默认约定      
     }
-11,在 webpack.config.js 配置文件中, 通过 entry 节点指定打包入口文件,通过 output 节点指定打包出口的存放目录
+5,在 webpack.config.js 配置文件中, 通过 entry 节点指定打包入口文件,通过 output 节点指定打包出口的存放目录
     {
         const path = require('path');
         module.exports = {
@@ -45,7 +53,7 @@
             filename : 'bundle.js'
         }
     }
-12,通过安装和配置第三方插件,可以拓展 webpack 的能力,最常用的插件:
+6,通过安装和配置第三方插件,可以拓展 webpack 的能力,最常用的插件:
     {
         1, webpack-dev-server
             {
@@ -89,7 +97,7 @@
                 5,注意:自动生成的文件存放在了内存当中,可以直接使用根目录访问index.html
             }
     }
-13, devServer 节点
+7, devServer 节点
     {
         1,在 webpack.config.js 配置文件中,通过 devServer 节点对 webpack-dev-server 插件进行更多配置
             {
@@ -103,3 +111,46 @@
                 }
             }
     }
+8, loder 的使用和配置
+    {
+        1, 在实际开发过程中, webpack 默认只能打包 .js 的模块文件,非 .js 文件默认处理不来,需要调用 loader 加载器才可以正常打包,否则报错.
+        2, loader 的作用: 协助 webpack 打包处理特定的文件模块,比如:
+            {
+                1, css-loader 打包 .css 相关的文件
+                2, less-loader 打包 .less 相关的文件
+                3, babel-loader 打包处理 webpack 无法处理的高级 js 语法
+            }
+        3, 打包处理css文件
+            {
+                1, 运行 npm i style-loader@3.0.0 css-loader@5.2.6 -D 命令,安装css文件的loader
+                2, 在 webpack.config.js 的module -> rules 数组中,添加 loader 规则:
+                    {
+                        module: {
+                            //所有第三方文件模块的匹配规则
+                            rules: [
+                                // 文件后缀名的匹配规则
+                                {
+                                    test: /\.css$/,
+                                    use: ['style-loader','css-loader']
+                                }
+                            ]
+                        }
+                    }
+                3, 其中, test 表示匹配的文件类型, use 表示对应要调用的 loader
+                4, 注意: 
+                    {
+                        use 数组中指定的 loader 顺序是固定的
+                        多个 loader 的调用顺序是: 从后往前调用
+                    }
+            }
+    }
+    loder 的运行机制
+        {
+            1, webpack 默认只能打包 .js 的文件,处理不了其他后缀的文件
+            2, 由于代码中包含了 index.css 这个文件,因此 webpack 默认处理不了
+            3, 当 webpack 发现某个文件处理不了的时候, 会查找 webpack.config.js 这个配置文件,看 module.rules 数组中,是否配置对应的 loder 加载器.
+            4, webpack 把 index.css 这个文件,先转交给最后一个 loder 进行处理(先转交给 css-loader )
+            5, 当 css-loader 处理完毕后,会把处理结果,转交给下一个 loader (转交给 style-loader )
+            6, 当 style-loader 处理完毕之后,发现没有下一个 loader 了,于是就把处理结果,转交给了 webpack
+            7, webpack 把 style-loader 处理的结果,合并到 /dist/bundle.js 中,最终生成打包号的文件
+        }
