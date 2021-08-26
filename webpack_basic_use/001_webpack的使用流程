@@ -284,3 +284,19 @@
                 1,在生产环境下,如果只想定位报错的具体行数,且不想暴露源代码,可以设置 devtool 为 nosources-source-map .
             }
     }
+12, 配置 @ 为引入根目录
+    {
+        告诉 webpack @ 是那一层目录
+            {
+                webpack.config.js 文件中新增 resolve 节点:
+                    {
+                        // 和 mode 同层级
+                        resolve: {
+                            alias: {
+                                // 告诉 webpack 程序员写的代码中, @ 符号表示 src 这一层目录
+                                '@': path.join(__dirname,'./src/)
+                            }
+                        }
+                    }
+            }
+    }
