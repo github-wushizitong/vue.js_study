@@ -1,5 +1,7 @@
 #这是git的配置文件
 
 
+
 #git上传时候过滤掉的文件
-/webpack_basic_use/node_modules
+/webpack_basic_use/
+/vue_basic_use/node_modules
