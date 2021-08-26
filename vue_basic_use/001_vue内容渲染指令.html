@@ -7,11 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- 希望Vue 控制下面的div ,帮数据填充到 div 内部 -->
-    <div id="app">{{msg}}
+    <div id="app">
+        <!-- v-text特性:会覆盖元素内部原有的内容 -->
+        <p v-text="username"></p>
+        <p v-text="gender">性别:</p>
+        <!-- 插值表达式 -->
+        <p>性别:{{gender}}</p>
+        <!-- 渲染html内容 -->
+        <div v-html="info"></div>
     </div>
-
-
 
 
     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
@@ -25,7 +29,10 @@
             el:'#app',
             //  渲染到页面上的数据
             data:{
-                msg:'hello'
+                msg:'hello',
+                username:'用户名字',
+                gender:'女',
+                info:'<h4 style="color:red;font-weight:bold;">欢迎大家学习Vue.js</h4>'
             }
         })
     </script>
