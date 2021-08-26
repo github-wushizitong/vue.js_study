@@ -216,4 +216,71 @@
                 }
         }
 9, 配置 webpack 的打包发布
-    
+    {
+        package.json 文件的 scripts 节点下,新增 build 命令:
+            "scripts": {
+                // 开发环境中,运行 dev 命令
+                "dev": "webpack serve",
+                // 项目发布时,运行 build 命令
+                "build": "webpack --mode production"
+            }
+        --mode 是一个参数项,用来指定 webpack 的运行模式,production 代表生产环境,会对打包生成的文件进行代码压缩和性能优化.
+        注意:通过 --mode 指定的参数项,会覆盖 webpack.config.js 中的 mode 节点
+    }
+10, 打包发布
+    1, 把 JavaScript 文件统一生成到 js 目录中
+        {
+            在 webpack.config.js 配置文件 output 节点下:
+                output: {
+                    path: path.join(__dirname,'dist'),
+                    // 明确告诉 webpack 生成的 bundle.js 文件存放到 dist 目录下的 js 子目录中
+                    filename: 'js/bundle.js'
+                }
+        }
+    2, 把图片文件统一生成 images 目录中:
+        {
+            test: /\.jpg|png|gif$/,
+            use: {
+                loader: 'url-loader',
+                options: {
+                    limit: 22228,
+                    // 明确告诉 webpack 生成的图片文件,存储到 dist 目录下的 image 文件中
+                    outputPath: 'images'
+                }
+            }
+        }
+    3,自动清理 dist 目录下的旧文件
+        {
+            为了在每次打包发布时自动清理 dist 目录中的旧文件,可以安装并且配置 clean-webpack-plugin 插件:
+                {
+                    1, 安装清理 dist 目录的 webpack 插件
+                        npm install clean-webpack-plugin@3.0.0 -D
+                    2, 按需导入插件 得到插件构造函数,创建插件的实例对象
+                        const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+                        const cleanPlugin = new CleanWebpackPlugin()
+                    3, 把创建的 cleanPlugin 挂载到 plugins 节点中
+                        plugins: [htmlPlugin,cleanPlugin]
+                }
+        }
+11, Source Map 的使用和配置
+    {
+        1, Source Map 是一个信息文件,里面存储着位置信息. Sourc Map 文件中存储着压缩混淆后的代码,所对应的转换前的位置.
+            有了它,出错的时候,除错工具将直接显示原始代码,而不是转换后的代码,极大方便后期调试.
+        2, 解决 Source Map 的方案
+            {
+                开发环境下, 推荐在 webpack.config.js 中添加如下配置,可保证运行时报错的行数与源代码行数一致:
+                    module.exports = {
+                        // eval-source-map 仅限在 开发模式 下使用,不建议 生产模式 下使用
+                        // 此选项生成的 Source Map 能够保证 运行时报错的行数 与 源代码行数保持一致
+                        devtool: 'eval-source-map'
+                    }
+            }
+        3, webpack 生产环境下的 Source Map:
+            {
+                1,在生产环境下,如果省略了 devtool 选项,最终生成的文件中 不包含 Sour Map. 这能防止源代码通过 Source Map 的形式暴漏给别有所图之人.
+            }
+        4, 只定位行数不暴露源代码
+            {
+                1,在生产环境下,如果只想定位报错的具体行数,且不想暴露源代码,可以设置 devtool 为 nosources-source-map .
+            }
+    }
