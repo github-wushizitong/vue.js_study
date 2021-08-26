@@ -8,10 +8,11 @@
 </head>
 <body>
     <div id="app">
+        <!-- v-on 的简写属性是@ -->
         <p>count的值是:{{count}}</p>
-        <button v-on:click="add" class="but">+1</button>
-        <!-- 事件绑定可以使用小括号传递参数 -->
-        <button v-on:click="sub(-1)">-1</button>
+        <button v-on:click="add(1,$event)" class="but">+1</button>
+        <!-- 事件绑定可以使用小括号传递参数,并且传递事件对象参数,解决了事件对象被覆盖的情况 -->
+        <button @click="sub(-1)">-1</button>
     </div>
 
 
@@ -36,9 +37,10 @@
                 count:0
             },
             methods:{
-                add:function(event){
-                    // console.log(event);
-                    this.count++;
+                add:function(n,event){
+                    console.log(n);
+                    console.log(event);
+                    this.count +=n;
                     // console.log(this);
                 },
                 sub(n){
