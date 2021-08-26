@@ -8,6 +8,7 @@
 </head>
 <body>
     <div id="app">
+        <!-- v-model只能和表单元素进行绑定 -->
         <input type="text" @keyup.esc="clearInput" @keyup.enter="commitAjax">
     </div>
 
