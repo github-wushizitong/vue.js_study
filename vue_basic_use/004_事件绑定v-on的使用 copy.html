@@ -9,7 +9,9 @@
 <body>
     <div id="app">
         <p>count的值是:{{count}}</p>
-        <button v-on:click="add">+1</button>
+        <button v-on:click="add" class="but">+1</button>
+        <!-- 事件绑定可以使用小括号传递参数 -->
+        <button v-on:click="sub(-1)">-1</button>
     </div>
 
 
@@ -34,9 +36,14 @@
                 count:0
             },
             methods:{
-                add:function(){
+                add:function(event){
+                    // console.log(event);
                     this.count++;
-                    console.log(this);
+                    // console.log(this);
+                },
+                sub(n){
+                    // console.log(this);
+                    this.count+=n
                 }
             }
         })
