@@ -12,8 +12,10 @@
         <table class="table table-bordered table-hover table-striped">
             <thead>
                 <th>索引</th>
-                <th>id</th>
                 <th>姓名</th>
+                <th>状态</th>
+                <th>时间</th>
+                <th>操作</th>
             </thead>
             <tbody>
                 <!-- 官方建议:只要用到了 v-for 指令 那么一定要绑定一个 :key 属性 ,而且,尽量把 id 作为 key 的值 -->
@@ -26,6 +28,10 @@
                             <label v-if="item.status" class="custom-control-label" :for="'customSwitch' + item.id">已启用</label>
                             <label v-else class="custom-control-label" :for="'customSwitch' + item.id">已禁用</label>
                         </div>
+                    </td>
+                    <td>{{item.time}}</td>
+                    <td>
+                        <a href="javascript:;" @click="remove(item.id)">删除</a>
                     </td>
                 </tr>
             </tbody>
@@ -62,6 +68,14 @@
                         time:new Date()
                     }
                 ]
+            },
+            methods:{
+                // 点击连接删除对应的品牌
+                remove(id){
+                    // console.log(id);
+                    // 过滤数组,把过滤的数组重新赋值给一个数组
+                    this.list = this.list.filter(item => item.id !== id)
+                }
             }
         })
     </script>
