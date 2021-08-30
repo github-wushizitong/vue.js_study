@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title><!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="info.msg">
+        <h2>{{info.msg}}</h2>
+        <input type="text" v-model="info.msg1">
+        <h2>{{info.msg1}}</h2>
+    </div>
+    
+    
+    
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- 生产环境版本，优化了尺寸和速度 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
+    <script>
+        // 定义了全局的filter过滤器函数
+        // 全局过滤器和私有过滤器发生冲突,优先使用私有过滤器
+        const vm = new Vue({
+            el:'#app',
+            data:{
+                info:{
+                msg:'你好',
+                msg1:'第二个侦听的数据'
+                }
+            },
+            // 事件等的方法函数
+            methods:{
+            },
+            // 过滤器函数必须要有返回值
+            filters:{
+            },
+            // 侦听器,侦听数据的变化
+            watch:{
+                // 侦听一个对象的子属性的变化,则必须包裹一层单引号
+                'info.msg1'(newValue){
+                    console.log('侦听到了最新值发生了改变');
+                }
+            }
+        })
+    </script>
+</body>
+</html>
