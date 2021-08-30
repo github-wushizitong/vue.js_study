@@ -1,6 +1,8 @@
 <template>
+    <!-- 在template只能有一个根元素,出现多个会报错 -->
     <div class="test-box">
         <h1>这事用户自定义的 Test.vue-----{{username}}</h1>
+        <button @click="changeName">按钮</button>
     </div>
 </template>
 <script>
@@ -13,6 +15,14 @@ export default {
         return{
             username:'admin'
         }
+    },
+    methods:{
+        changeName(){
+            // this指向的是vue组件的实例对象
+            console.log(this);
+            console.dir(this.$el);
+            this.username = '改变后的data数据源中的username';
+        }
     }
 }
 </script>
@@ -21,5 +31,8 @@ export default {
         background-color: pink;
         width: 500px;
         height: 500px;
+        h1{
+            color: red;
+        }
     }
 </style>
