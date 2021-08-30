@@ -2,7 +2,17 @@
 import Vue from 'vue'
 // 导入 App.vue 跟组件, 将来要把 APP.vue 中的模板结构,渲染到 HTML页面中 
 // import App from './App.vue'
-import App from './App.vue';
+import App from '@/App.vue'
+
+/**
+ *  配置 @ 路径提示 
+ *    1,在vacode中 安装 Path Autocomplete 插件
+ *    2,在 VScode的配置文件 setting.json 文件中 加入以下配置:
+ *      //  导入文件时是否携带文件的扩展名
+ *      "path-autocomplete.extensionOnlmport":true
+ *      // 配置 @ 的路径提示
+ *      "path-autocomplete.pathMappings":{"@":"${folder}/src"}
+ */
 
 Vue.config.productionTip = false
 
