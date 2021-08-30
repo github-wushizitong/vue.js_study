@@ -14,6 +14,9 @@ const vm = new VTTCue({
     filters:{},
     // 侦听器,侦听数据的变化
     watch:{
+    },
+    // 计算属性,计算出来的属性值可以被模板结构或者 methods 节点下的方法使用.
+    computed:{
     }
 
 })
