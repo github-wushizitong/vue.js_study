@@ -6,6 +6,7 @@
     <Left></Left>
     <Right></Right>
     <Quanju></Quanju>
+    <Test></Test>
     </div>
   </div>
 </template>
@@ -13,6 +14,7 @@
   // 导入需要使用的 子组件
   import Left from '@/components/Left.vue'
   import Right from '@/components/Right.vue'
+  import Test from '@/Test.vue'
 
   export default {
     name:'App',
@@ -20,7 +22,8 @@
     components:{
       // 键和值一样的话也可以简写
       'Left':Left,
-      Right
+      Right,
+      Test
     }
   }
 </script>

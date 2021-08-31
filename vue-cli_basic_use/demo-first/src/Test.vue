@@ -8,6 +8,7 @@
 <script>
 // 默认导出,这事组件的固定写法
 export default {
+    name:'Test',
     // data 数据源
     // 注意: vue 组件中的 data 不能指向对象
     // 注意: 组件中的 data 必须是一个函数
@@ -19,10 +20,19 @@ export default {
     methods:{
         changeName(){
             // this指向的是vue组件的实例对象
-            console.log(this);
-            console.dir(this.$el);
+            // console.log(this);
+            // console.dir(this.$el);
             this.username = '改变后的data数据源中的username';
         }
+    },
+    // 创建阶段的第一个生命周期函数
+    beforeCreate(){
+        // 此时还访问不到 export default 暴露出的js代码
+        console.log(this.username);
+    },
+    // created 生命周期函数,非常常用,经常调用 methods 中的方法来发生 ajax 请求,渲染 template 模板
+    created(){
+        // 发送 ajax 请求 来获取数据
     }
 }
 </script>
