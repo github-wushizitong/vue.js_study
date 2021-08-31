@@ -17,7 +17,11 @@
         props:{
             init:{
                 // 定义 该数据的默认值
-                default:0
+                default:0,
+                // 定义 接收的数据必须为 Number 类型
+                type:Number,
+                // 定义 父组件必须向子组件传递该属性
+                required:true
             }
         },
         data() {
