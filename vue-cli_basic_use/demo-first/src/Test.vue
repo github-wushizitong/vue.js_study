@@ -33,6 +33,16 @@ export default {
     // created 生命周期函数,非常常用,经常调用 methods 中的方法来发生 ajax 请求,渲染 template 模板
     created(){
         // 发送 ajax 请求 来获取数据
+    },
+    beforeMount(){
+        // 此时页面还没有被渲染,还在内存中
+        console.log(this.$el);
+    },
+    // 如果要操作当前组件的DOM ,最早只能在 mounted 钩子阶段执行
+    mounted(){
+        // 此时页面已经被渲染了
+        console.log(this.$el);
+        console.log(this.$el.children);
     }
 }
 </script>
