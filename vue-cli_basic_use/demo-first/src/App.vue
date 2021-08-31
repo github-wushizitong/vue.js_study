@@ -4,7 +4,6 @@
       <h1>这事app父组件</h1>
     <!-- 使用子组件 -->
     <Left></Left>
-    <!-- 使用 vscode 插件 Auto Close Tag 来自动闭合 组件标签 不用做配置-->
     <Right></Right>
     <Quanju></Quanju>
     </div>
