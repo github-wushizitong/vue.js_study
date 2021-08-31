@@ -4,6 +4,13 @@ import Vue from 'vue'
 // import App from './App.vue'
 import App from '@/App.vue'
 
+
+// 导入全局组件
+import Quanju from '@/components/Quanju.vue'
+
+// 注册全局组件,参数1:注册名称,参数2:需要被全局注册导入的组件名称
+Vue.component('Quanju',Quanju);
+
 /**
  *  配置 @ 路径提示 
  *    1,在vacode中 安装 Path Autocomplete 插件

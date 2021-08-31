@@ -5,6 +5,7 @@
     <!-- 使用子组件 -->
     <Left></Left>
     <Right></Right>
+    <Quanju></Quanju>
     </div>
   </div>
 </template>
@@ -33,3 +34,4 @@
     }
   }
 </style>
+style
