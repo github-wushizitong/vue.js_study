@@ -1,21 +1,27 @@
 <template>
-    <div class="left">
-        <h2>这是 Left.vue 子组件</h2>
-        <!-- 父组件使用自定义属性 向子组件传值 ,注意:使用 v-bind 属性绑定才能传过去的值是 数字类型的数据 -->
-        <Count :init='100'></Count>
-
+    <div class="left-components">
+        <h1>我是Left子组件</h1>
+        <p>user的值:{{user}}</p>
+        <p>msg的值:{{msg}}</p>
     </div>
 </template>
+
 <script>
-export default {
-    name:'Left'
-}
-</script>
-<style lang="less" scoped>
-    .left{
-        background-color: #fff;
+    export default {
+        data(){
+            return {
+                
+            }
+        },
+        props:['msg','user']
     }
-    h2{
-        color:red;
+</script>
+
+<style lang="less" scoped>
+    .left-components{
+        padding:0 20px 20px;
+        background-color: orange;
+        min-height: 250px;
+        flex:1
     }
 </style>
