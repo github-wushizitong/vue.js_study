@@ -28,7 +28,7 @@ export default {
     // 创建阶段的第一个生命周期函数
     beforeCreate(){
         // 此时还访问不到 export default 暴露出的js代码
-        console.log(this.username);
+        // console.log(this.username);
     },
     // created 生命周期函数,非常常用,经常调用 methods 中的方法来发生 ajax 请求,渲染 template 模板
     created(){
@@ -36,13 +36,30 @@ export default {
     },
     beforeMount(){
         // 此时页面还没有被渲染,还在内存中
-        console.log(this.$el);
+        // console.log(this.$el);
     },
     // 如果要操作当前组件的DOM ,最早只能在 mounted 钩子阶段执行
     mounted(){
         // 此时页面已经被渲染了
-        console.log(this.$el);
-        console.log(this.$el.children);
+        // console.log(this.$el);
+        // console.log(this.$el.children);
+    },
+    // 当组件内 所有的初始化数据 发生改变的时候会触发 该回调钩子,此时页面还没有重新渲染,结构页面的数据还没有被改变                                          
+    beforeUpdate(){
+        1
+    },
+    // 当组件内 所有的初始化数据 发生改变以后会触发该回调狗子,此时页面已经被重新渲染,结构页面的数据也被同步了
+    // 数据发送变化之后,为了能操作到最新的 DOM 结构,必须把代码写到 updated 生命周期函数中
+    updated(){
+
+    },
+    // 将要销毁此组件,此时尚未销毁,组件还处于正常工作状态的时候发生的回调
+    beforeDestroy(){
+
+    },
+    // 组件已经被销毁,此组件在浏览器中对应的DOM结构已经被完全移除的回调
+    destroyed(){
+
     }
 }
 </script>
