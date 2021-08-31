@@ -37,4 +37,8 @@
     .countBox{
         background-color:slateblue;
     }
+    // 当使用第三方组件库的时候,如果又修改第三方组件默认样式的需求,需要用到 /deep/
+    /deep/ p{
+        font-weight: 900;
+    }
 </style>
