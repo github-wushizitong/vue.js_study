@@ -24,7 +24,8 @@
     }
   }
 </script>
-<style lang="less">
+<style lang="less" scoped>
+  // 加了 scoped 属性,会防止组件之间的样式冲突,vue.js 底层 对每个组件都都使用了属性选择器 
   .appRoot{
     background-color: green;
     width: 1000px;

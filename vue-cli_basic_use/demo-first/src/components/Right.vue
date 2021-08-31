@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
     .right{
         background-color: #ccc;
         h4{

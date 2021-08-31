@@ -11,7 +11,7 @@ export default {
     name:'Left'
 }
 </script>
-<style lang="less">
+<style lang="less" scoped>
     .left{
         background-color: #fff;
     }
