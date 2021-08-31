@@ -12,7 +12,14 @@
         // 父组件通过行内自定义属性传递过来的值都是用 子组件中 props 数组中对应的参数名称接收
         // props 数组中的数据 是只读的
         //  不能修改 数组中的数据,否则 会报错
-        props:['init'],
+        // props:['init'],
+        // 如果 父组件 不通过自定义属性方式给子组件的 props 数组传值,那就以对象的形式 定义 props 
+        props:{
+            init:{
+                // 定义 该数据的默认值
+                default:0
+            }
+        },
         data() {
             return {
                 count:this.init
