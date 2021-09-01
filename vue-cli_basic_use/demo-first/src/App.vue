@@ -1,34 +1,34 @@
 <template>
   <div class="app-components">
-    <button @click="count_0">App.vue组件重置子组件count的值为0</button>
-    <div class="box">
-      <Left ref="left_vue"></Left>
-    </div>
+    <input type="text" v-if="isputVisible" @blur="showButton" ref="inputRef">
+    <button v-else @click="showInput">展示输入框</button>
   </div>
 </template>
 
 <script>
-  // 导入子组件
-  import Left from '@/components/Left.vue'
   export default {
     naem:'App',
     data(){
       return {
+        isputVisible:true
       }
     },
     methods: {
-      // 重置子组件 count的值的回调
-      count_0(){
-        // 打印 子组件 Left.vue 的实例对象
-        // console.log(this.$refs.left_vue);
-        // this.$refs.left_vue.count = 0;
-        // 调用方法 重置 count的值
-        this.$refs.left_vue.count_0();
+      showButton(){
+        this.isputVisible = false;
+      },
+      showInput(){
+        this.isputVisible = true;
+        // 将回调延迟到下次 DOM 更新循环之后执行。在修改数据之后立即使用它，然后等待 DOM 更新。它跟全局方法 Vue.nextTick 一样，不同的是回调的 this 自动绑定到调用它的实例上。
+        this.$nextTick(()=>{
+          // focus() 方法 文本框自动获取焦点
+          this.$refs.inputRef.focus();
+        })
+
       }
     },
     // 挂载跟组件
     components:{
-      Left
     }
   }
 </script>
