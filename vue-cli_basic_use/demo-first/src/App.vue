@@ -1,7 +1,9 @@
 <template>
   <div class="app-components">
-    <h1>我是APP.uve组件</h1>
+    <!-- ref属性 往 this vue组件实例对象 下的属性 $refs 对象下添加 DOM 元素对象 -->
+    <h1 ref="myH1">我是APP.uve组件</h1>
     <h2>count值为:{{count}}</h2>
+    <button @click="showThis">打印this</button>
     <hr>
     <div class="box">
       <!-- 使用子组件 -->
@@ -31,6 +33,17 @@
       getRightComponentNumber(value){
         // console.log(value);
         this.count = value;
+      },
+      // 打印this 按钮的回调
+      showThis(){
+        // 打印 组件实例对象
+        // console.log(this);
+        // 打印组件 下的 $refs DOM 对象数组
+        // console.log(this.$refs);
+        // 打印 通过 ref 属性引用操作的 DOM 元素
+        // console.log(this.$refs.myH1);
+        // console.log(this.$refs.myH1.style);
+        this.$refs.myH1.style.color = "red";
       }
     },
     // 挂载跟组件
