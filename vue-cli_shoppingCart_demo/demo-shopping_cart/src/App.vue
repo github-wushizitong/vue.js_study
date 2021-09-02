@@ -14,6 +14,7 @@
         ></Goods>
         <Footer 
           :isFull="fullState"
+          :amout="amt"
           @footer_full_state="getFooterFullState"
           ></Footer>
     <h1>App 根组件</h1>
@@ -77,6 +78,11 @@
       fullState(){
         // every  判断的条件都为真 返回真,有一个item为假返回假
         return this.list.every(item=>item.goods_state);
+      },
+      // 计算选中商品的总价格
+      amt(){
+        // 先 filter 过滤,再 reduce 累加
+        return this.list.filter(item=>item.goods_state).reduce((total,item)=> total += item.goods_price * item.goods_count ,0);
       }
     },
     // 生命周期函数 

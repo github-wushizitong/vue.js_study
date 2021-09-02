@@ -13,7 +13,7 @@
     </div>
 
     <!-- 结算按钮 -->
-    <button type="button" class="btn btn-primary btn-settle">结算（{{ 0 }}）</button>
+    <button type="button" class="btn btn-primary btn-settle">结算（{{ amout }}）</button>
   </div>
 </template>
 
@@ -21,7 +21,6 @@
 export default {
   data(){
     return {
-      fullStateData:true
     }
   },
   // 父组件传递过来的参数
@@ -30,12 +29,16 @@ export default {
     isFull:{
       type:Boolean,
       required:true
+    },
+    // 商品总价
+    amout:{
+      type:Number,
+      default:0
     }
   },
   methods:{
     // 获取input复选框的选中状态
     getFullState(e){
-      this.fullStateData = e.target.checked;
       // console.log(e.target.checked);
       // 通过自定义事件向父组件传递参数
       this.$emit('footer_full_state',{fullState:e.target.checked});
