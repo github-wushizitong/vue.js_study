@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        const arr = ['小红','倪大红','苏大强','宝'];
+
+        // forEach方法的 性能不好, 循环一旦开始,无法在中间被条件终止,如果添加为真,还会继续把数组所有的元素循环完毕
+        let arr_true = arr.forEach((item,index)=>{
+            console.log('object');
+            if(item === '苏大强'){
+                console.log(index);
+            }
+        })
+        // some方法 性能好,循环开始,如果条件成立,返回布尔值,不会继续循环判断条件以后的数组元素
+        arr.some((item,index)=>{
+            console.log('ok');
+            if(item === '苏大强'){
+                console.log(index);
+                return true
+            }
+        })
+
+        const arraaa = [
+            {id:1,name:'西瓜',state:true},
+            {id:1,name:'苹果',state:false},
+            {id:1,name:'橘子',state:true}
+        ]
+
+        // every方法 判断数组中每一个元素,都为真则返回真,有一个为假,返回假
+        const result = arraaa.every((item)=>{
+            return item.state === true
+        })
+        console.log(result);
+
+
+        
+
+        const arradd = [
+            {id:1,name:'西瓜',state:true,price:10,count:8},
+            {id:1,name:'苹果',state:false,price:80,count:2},
+            {id:1,name:'橘子',state:true,price:20,count:9}
+        ]
+
+        // 普通实现方式
+        // let amt = 0; //总价
+        // arradd.filter(item=>item.state).forEach(item=>{
+        //     amt += item.price * item.count;
+        // })
+
+        // reduce 累计器方法实现
+        // const resultAdd = arradd.filter(item => item.state).reduce((amt,item)=>{return amt += item.price * item.count;},0)
+        const resultAdd = arradd.filter(item => item.state).reduce((amt,item)=>amt += item.price * item.count,0)
+        console.log(resultAdd);
+    </script>
+    
+</body>
+</html>
