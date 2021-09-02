@@ -4,7 +4,8 @@
       <Goods
         v-for="item in list"
         :key="item.id"
-        
+        :title="item.goods_name"
+        :pic="item.goods_img"
         ></Goods>
     <h1>App 根组件</h1>
   </div>

@@ -7,14 +7,14 @@
         <input type="checkbox" class="custom-control-input" id="cb1" :checked="true" />
         <label class="custom-control-label" for="cb1">
           <!-- 商品的缩略图 -->
-          <img src="../../assets/logo.png" alt="" />
+          <img :src="pic" alt="" />
         </label>
       </div>
     </div>
     <!-- 右侧信息区域 -->
     <div class="goods-info">
       <!-- 商品标题 -->
-      <h6 class="goods-title">商品名称商品名称商品名称商品名称</h6>
+      <h6 class="goods-title">{{title}}</h6>
       <div class="goods-info-bottom">
         <!-- 商品价格 -->
         <span class="goods-price">￥0</span>
@@ -25,7 +25,21 @@
 </template>
 
 <script>
-export default {}
+export default {
+  // 接收父组件 传递过来的自定义属性的值(参数)
+  props:{
+    // 商品标题
+    title:{
+      type:String,
+      default:''
+    },
+    // 商品图片
+    pic:{
+      type:String,
+      default:''
+    }
+  }
+}
 </script>
 
 <style lang="less" scoped>
