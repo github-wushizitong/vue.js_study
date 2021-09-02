@@ -3,14 +3,13 @@
     <!-- 减 1 的按钮 -->
     <button type="button" class="btn btn-light btn-sm">-</button>
     <!-- 购买的数量 -->
-    <span class="number-box">0</span>
+    <span class="number-box">1</span>
     <!-- 加 1 的按钮 -->
     <button type="button" class="btn btn-light btn-sm">+</button>
   </div>
 </template>
 
 <script>
-
 export default {}
 </script>
 

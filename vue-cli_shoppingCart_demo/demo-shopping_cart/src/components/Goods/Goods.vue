@@ -4,29 +4,28 @@
     <div class="thumb">
       <div class="custom-control custom-checkbox">
         <!-- 复选框 -->
-        <input type="checkbox" class="custom-control-input" checked/>
-        <label class="custom-control-label">
+        <input type="checkbox" class="custom-control-input" id="cb1" :checked="true" />
+        <label class="custom-control-label" for="cb1">
           <!-- 商品的缩略图 -->
-          <img src="" alt="" />
+          <img src="../../assets/logo.png" alt="" />
         </label>
       </div>
     </div>
     <!-- 右侧信息区域 -->
     <div class="goods-info">
       <!-- 商品标题 -->
-      <h6 class="goods-title">商品名称圣诞节分厘卡即使离开对方</h6>
+      <h6 class="goods-title">商品名称商品名称商品名称商品名称</h6>
       <div class="goods-info-bottom">
         <!-- 商品价格 -->
         <span class="goods-price">￥0</span>
+        <!-- 商品的数量 -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
 <style lang="less" scoped>
