@@ -63,7 +63,7 @@ export default {
       // 打印 当前组件的 实例对象
       // console.log(this);
       // 打印 当前 组件实例对象 下的 id属性
-      console.log(this.id);
+      // console.log(this.id);
       
 
       // 通过自定义事件 向父组件传递参数

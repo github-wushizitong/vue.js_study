@@ -12,7 +12,10 @@
         :state="item.goods_state"
         @state_change="getNewState"
         ></Goods>
-        <Footer :isFull="fullState"></Footer>
+        <Footer 
+          :isFull="fullState"
+          @footer_full_state="getFooterFullState"
+          ></Footer>
     <h1>App 根组件</h1>
   </div>
 </template>
@@ -42,7 +45,7 @@
           this.list = res.list;
         }
       },
-      // 接收子组件通过自定义事件传递过来的参数
+      // 接收子组件Goods.vue通过自定义事件传递过来的参数
       getNewState(value){
         // console.log(value);
         this.list.some(item=>{
@@ -52,6 +55,14 @@
             return;
           }
         })
+      },
+      // 接收子组件Footer.vue通过自定义事件传递过来的参数
+      getFooterFullState(e){
+        // console.log(e);
+        // 把全选状态的布尔值 赋值给所有的商品选中状态的值
+        this.list.forEach((item)=>{
+          item.goods_state = e.fullState;
+        })
       }
     },
     // 挂载子组件的components节点
@@ -60,7 +71,7 @@
       Goods,
       Footer
     },
-    // 计算属性
+    // 计算属性 定义的时候是方法,使用的时候是组件实例对象的属性
     computed:{
       // 动态计算出全选的状态 是true 还是 false
       fullState(){

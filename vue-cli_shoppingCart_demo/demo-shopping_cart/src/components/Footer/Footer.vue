@@ -2,7 +2,7 @@
   <div class="footer-container">
     <!-- 左侧的全选 -->
     <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" id="cbFull" :checked="isFull" />
+      <input type="checkbox" class="custom-control-input" id="cbFull" :checked="isFull" @change="getFullState"/>
       <label class="custom-control-label" for="cbFull">全选</label>
     </div>
 
@@ -19,10 +19,26 @@
 
 <script>
 export default {
+  data(){
+    return {
+      fullStateData:true
+    }
+  },
+  // 父组件传递过来的参数
   props:{
+    // 全选状态
     isFull:{
       type:Boolean,
       required:true
+    }
+  },
+  methods:{
+    // 获取input复选框的选中状态
+    getFullState(e){
+      this.fullStateData = e.target.checked;
+      // console.log(e.target.checked);
+      // 通过自定义事件向父组件传递参数
+      this.$emit('footer_full_state',{fullState:e.target.checked});
     }
   }
 }
