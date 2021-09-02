@@ -21,11 +21,13 @@
         font-size: 12px;
         height: 45px;
         width: 100%;
-        background-color: rgb(0, 102, 255);
-        text-align: center;
-        line-height: 45px;
-        font-size:28px;
-        font-weight: 400;
-        color:#fff;
+        background-color: #1d7bff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        position: fixed;
+        top: 0;
+        z-index: 999;
     }
 </style>
