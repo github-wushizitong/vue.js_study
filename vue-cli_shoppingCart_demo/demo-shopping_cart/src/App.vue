@@ -10,6 +10,7 @@
         :pic="item.goods_img"
         :price="item.goods_price"
         :state="item.goods_state"
+        :count="item.goods_count"
         @state_change="getNewState"
         ></Goods>
         <Footer 

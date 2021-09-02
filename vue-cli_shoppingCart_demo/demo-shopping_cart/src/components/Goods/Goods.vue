@@ -19,12 +19,15 @@
         <!-- 商品价格 -->
         <span class="goods-price">￥{{price}}</span>
         <!-- 商品的数量 -->
+        <Counter :counter="count"></Counter>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  // 导入子组件 Count.vue
+  import Counter from '@/components/Counter/Counter.vue'
 export default {
   // 接收父组件 传递过来的自定义属性的值(参数)
   props:{
@@ -52,7 +55,16 @@ export default {
     state:{
       type:Boolean,
       default:false
+    },
+    // 向子组件Counter.vue 传递的商品数量
+    count:{
+      type:Number,
+      default:0
     }
+  },
+  // 挂载子组件
+  components:{
+    Counter
   },
   methods:{
     stateChange(e){
