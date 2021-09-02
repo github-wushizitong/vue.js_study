@@ -1,34 +1,31 @@
 <template>
   <div class="app-components">
-    <input type="text" v-if="isputVisible" @blur="showButton" ref="inputRef">
-    <button v-else @click="showInput">展示输入框</button>
+    <h1>App 跟组件</h1>
+    <hr>
+    <!-- 使用 vue.js  内置组件占位符 渲染组件 -->
+    <!-- is 属性值 表示要渲染的子组件的名字 -->
+    <component :is="right_component"></component>
   </div>
 </template>
 
 <script>
+  // 导入子组件
+  import Left from '@/components/Left.vue'
+  import Right from '@/components/Left.vue'
   export default {
     naem:'App',
     data(){
       return {
-        isputVisible:true
+        left_component:'Left',
+        right_component:'Right'
       }
     },
     methods: {
-      showButton(){
-        this.isputVisible = false;
-      },
-      showInput(){
-        this.isputVisible = true;
-        // 将回调延迟到下次 DOM 更新循环之后执行。在修改数据之后立即使用它，然后等待 DOM 更新。它跟全局方法 Vue.nextTick 一样，不同的是回调的 this 自动绑定到调用它的实例上。
-        this.$nextTick(()=>{
-          // focus() 方法 文本框自动获取焦点,如果放到 updated 生命周期函数里,只要数据变化就会触发,所以这句代码放到里面会再次获取焦点,报错
-          this.$refs.inputRef.focus();
-        })
-
-      }
     },
     // 挂载跟组件
     components:{
+      'Left':Left,
+      Right
     }
   }
 </script>
