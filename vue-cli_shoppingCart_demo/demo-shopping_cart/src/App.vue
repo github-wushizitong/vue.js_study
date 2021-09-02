@@ -1,118 +1,116 @@
 <template>
   <div class="app-container">
-      <!-- 使用子组件 -->
-      <Header title="标题"></Header>
-      <Goods
-        v-for="item in list"
-        :key="item.id"
-        :id="item.id"
-        :title="item.goods_name"
-        :pic="item.goods_img"
-        :price="item.goods_price"
-        :state="item.goods_state"
-        :count="item.goods_count"
-        @state_change="getNewState"
-        ></Goods>
-        <Footer 
-          :isFull="fullState"
-          :amout="amt"
-          :all="total"
-          @footer_full_state="getFooterFullState"
-          ></Footer>
-    <h1>App 根组件</h1>
+    <!-- Header 头部区域 -->
+    <Header title="购物车案例"></Header>
+    <!-- 循环渲染每一个商品的信息 -->
+    <Goods
+      v-for="item in list"
+      :key="item.id"
+      :id="item.id"
+      :title="item.goods_name"
+      :pic="item.goods_img"
+      :price="item.goods_price"
+      :state="item.goods_state"
+      :count="item.goods_count"
+      @state-change="getNewState"
+    ></Goods>
+
+    <!-- Footer 区域 -->
+    <Footer 
+    :isfull="fullState" 
+    :amount="amt" 
+    :all="total" 
+    @full-change="getFullState"></Footer>
   </div>
 </template>
 
 <script>
-  // 导入 axios 请求框架
-  import axios from 'axios'
-  // 导入 Header.vue 子组件
-  import Header from '@/components/Header/Header.vue'
-  import Goods from '@/components/Goods/Goods.vue'
-  import Footer from '@/components/Footer/Footer.vue'
+// 导入 axios 请求库
+import axios from 'axios'
+// 导入需要的组件
+import Header from '@/components/Header/Header.vue'
+import Goods from '@/components/Goods/Goods.vue'
+import Footer from '@/components/Footer/Footer.vue'
 
-  // 导入 EventBus.js 文件用来兄弟组件之间的数据共享
-  import bus from '@/components/EventBus.js'
-  export default {
-    data(){
-      return {
-        // 购物车列表数据
-        list:[] 
-      }
-    },
-    // 组件中使用的方法
-    methods:{
-      async initCartList(){
-        // 调用 axios 的get 方法,请求列表数据,解构出来的 data对象重新命名为 res
-        const {data:res} = await axios.get('https://www.escook.cn/api/cart')
-        // console.log(res);
-        if(res && res.status === 200){
-          this.list = res.list;
-        }
-      },
-      // 接收子组件Goods.vue通过自定义事件传递过来的参数
-      getNewState(value){
-        // console.log(value);
-        this.list.some(item=>{
-          if(item.id === value.id){
-            item.goods_state = value.GoodsCheckboxChecked;
-            // 终止后续的循环
-            return;
-          }
-        })
-      },
-      // 接收子组件Footer.vue通过自定义事件传递过来的参数
-      getFooterFullState(e){
-        // console.log(e);
-        // 把全选状态的布尔值 赋值给所有的商品选中状态的值
-        this.list.forEach((item)=>{
-          item.goods_state = e.fullState;
-        })
-      }
-    },
-    // 挂载子组件的components节点
-    components:{
-      'Header':Header,
-      Goods,
-      Footer
-    },
-    // 计算属性 定义的时候是方法,使用的时候是组件实例对象的属性
-    computed:{
-      // 动态计算出全选的状态 是true 还是 false
-      fullState(){
-        // every  判断的条件都为真 返回真,有一个item为假返回假
-        return this.list.every(item=>item.goods_state);
-      },
-      // 计算选中商品的总价格
-      amt(){
-        // 先 filter 过滤,再 reduce 累加
-        return this.list.filter(item=>item.goods_state).reduce((total,item)=> total += item.goods_price * item.goods_count ,0);
-      },
-      // 已经勾选商品的总数量
-      total(){
-        return this.list.filter(item=>item.goods_state).reduce((t,item)=> t += item.goods_count,0)
-      }
-    },
-    // 生命周期函数 
-    created(){
-      this.initCartList();
-      bus.$on('share',value => {
-        console.log(value);
-        this.list.some(item=>{
-          if(item.id === value.id){
-            item.goods_count = value.value;
-          }
-          return true;
-        })
-      })
+import bus from '@/components/eventBus.js'
+
+export default {
+  data() {
+    return {
+      // 用来存储购物车的列表数据，默认为空数组
+      list: []
     }
+  },
+  // 计算属性
+  computed: {
+    // 动态计算出全选的状态是 true 还是 false
+    fullState() {
+      return this.list.every(item => item.goods_state)
+    },
+    // 已勾选商品的总价格
+    amt() {
+      // 1. 先 filter 过滤
+      // 2. 再 reduce 累加
+      return this.list
+        .filter(item => item.goods_state)
+        .reduce((total, item) => (total += item.goods_price * item.goods_count), 0)
+    },
+    // 已勾选商品的总数量
+    total() {
+      return this.list.filter(item => item.goods_state).reduce((t, item) => (t += item.goods_count), 0)
+    }
+  },
+  created() {
+    // 调用请求数据的方法
+    this.initCartList()
 
+    bus.$on('share', val => {
+      this.list.some(item => {
+        if (item.id === val.id) {
+          item.goods_count = val.value
+          // 注意 return的 位置
+          return true
+        }
+      })
+    })
+  },
+  methods: {
+    // 封装请求列表数据的方法
+    async initCartList() {
+      // 调用 axios 的 get 方法，请求列表数据
+      const { data: res } = await axios.get('https://www.escook.cn/api/cart')
+      // 只要请求回来的数据，在页面渲染期间要用到，则必须转存到 data 中
+      if (res.status === 200) {
+        this.list = res.list
+      }
+    },
+    // 接收子组件传递过来的数据
+    // e 的格式为 { id, value }
+    getNewState(e) {
+      this.list.some(item => {
+        if (item.id === e.id) {
+          item.goods_state = e.value
+          // 终止后续的循环
+          return true
+        }
+      })
+    },
+    // 接收 Footer 子组件传递过来的全选按钮的状态
+    getFullState(val) {
+      this.list.forEach(item => (item.goods_state = val))
+    }
+  },
+  components: {
+    Header,
+    Goods,
+    Footer
   }
+}
 </script>
 
 <style lang="less" scoped>
-  .app-container{
-    padding-top:45px;
-    padding-bottom: 50px;
-  }
+.app-container {
+  padding-top: 45px;
+  padding-bottom: 50px;
+}
 </style>
