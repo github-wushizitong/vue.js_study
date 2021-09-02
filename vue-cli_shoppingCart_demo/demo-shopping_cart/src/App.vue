@@ -1,6 +1,5 @@
 <template>
   <div class="app-container">
-    {{fullState}}
       <!-- 使用子组件 -->
       <Header title="标题"></Header>
       <Goods
@@ -13,6 +12,7 @@
         :state="item.goods_state"
         @state_change="getNewState"
         ></Goods>
+        <Footer :isFull="fullState"></Footer>
     <h1>App 根组件</h1>
   </div>
 </template>
@@ -23,6 +23,7 @@
   // 导入 Header.vue 子组件
   import Header from '@/components/Header/Header.vue'
   import Goods from '@/components/Goods/Goods.vue'
+  import Footer from '@/components/Footer/Footer.vue'
 
   export default {
     data(){
@@ -56,7 +57,8 @@
     // 挂载子组件的components节点
     components:{
       'Header':Header,
-      Goods
+      Goods,
+      Footer
     },
     // 计算属性
     computed:{
