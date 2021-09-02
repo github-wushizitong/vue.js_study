@@ -42,7 +42,14 @@
       },
       // 接收子组件通过自定义事件传递过来的参数
       getNewState(value){
-        console.log(value);
+        // console.log(value);
+        this.list.some(item=>{
+          if(item.id === value.id){
+            item.goods_state = value.GoodsCheckboxChecked;
+            // 终止后续的循环
+            return;
+          }
+        })
       }
     },
     // 挂载子组件的components节点

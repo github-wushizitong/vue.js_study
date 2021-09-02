@@ -3,9 +3,9 @@
     <!-- 左侧图片 -->
     <div class="thumb">
       <div class="custom-control custom-checkbox">
-        <!-- 复选框 -->
-        <input type="checkbox" class="custom-control-input" id="cb1" :checked="state" @change="stateChange"/>
-        <label class="custom-control-label" for="cb1">
+        <!-- 复选框   为了避免组件列表复用的冲突,建议更改 id属性为动态属性-->
+        <input type="checkbox" class="custom-control-input" :id="'cb' + id" :checked="state" @change="stateChange"/>
+        <label class="custom-control-label" :for="'cb' + id">
           <!-- 商品的缩略图 -->
           <img :src="pic" alt="" />
         </label>
