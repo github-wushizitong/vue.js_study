@@ -1,11 +1,14 @@
 <template>
   <div class="app-container">
+      <!-- 使用子组件 -->
       <Header title="标题"></Header>
       <Goods
         v-for="item in list"
         :key="item.id"
         :title="item.goods_name"
         :pic="item.goods_img"
+        :price="item.goods_price"
+        :state="item.goods_state"
         ></Goods>
     <h1>App 根组件</h1>
   </div>
