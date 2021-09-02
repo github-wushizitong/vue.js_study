@@ -5,10 +5,12 @@
       <Goods
         v-for="item in list"
         :key="item.id"
+        :id="item.id"
         :title="item.goods_name"
         :pic="item.goods_img"
         :price="item.goods_price"
         :state="item.goods_state"
+        @state_change="getNewState"
         ></Goods>
     <h1>App 根组件</h1>
   </div>
@@ -37,6 +39,10 @@
         if(res && res.status === 200){
           this.list = res.list;
         }
+      },
+      // 接收子组件通过自定义事件传递过来的参数
+      getNewState(value){
+        console.log(value);
       }
     },
     // 挂载子组件的components节点

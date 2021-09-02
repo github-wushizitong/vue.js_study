@@ -4,7 +4,7 @@
     <div class="thumb">
       <div class="custom-control custom-checkbox">
         <!-- 复选框 -->
-        <input type="checkbox" class="custom-control-input" id="cb1" :checked="state" />
+        <input type="checkbox" class="custom-control-input" id="cb1" :checked="state" @change="stateChange"/>
         <label class="custom-control-label" for="cb1">
           <!-- 商品的缩略图 -->
           <img :src="pic" alt="" />
@@ -28,6 +28,11 @@
 export default {
   // 接收父组件 传递过来的自定义属性的值(参数)
   props:{
+    // 商品id
+    id:{
+      type:Number,
+      required:true
+    },
     // 商品标题
     title:{
       type:String,
@@ -47,6 +52,22 @@ export default {
     state:{
       type:Boolean,
       default:false
+    }
+  },
+  methods:{
+    stateChange(e){
+      // 打印事件对象
+      // console.log(e);
+      // 打印事件对象的 checked属性的值
+      // console.log(e.target.checked);
+      // 打印 当前组件的 实例对象
+      // console.log(this);
+      // 打印 当前 组件实例对象 下的 id属性
+      console.log(this.id);
+      
+
+      // 通过自定义事件 向父组件传递参数
+      this.$emit('state_change',{id:this.id,GoodsCheckboxChecked:e.target.checked})
     }
   }
 }
