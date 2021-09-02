@@ -1,5 +1,6 @@
 <template>
   <div class="app-container">
+    {{fullState}}
       <!-- 使用子组件 -->
       <Header title="标题"></Header>
       <Goods
@@ -56,6 +57,14 @@
     components:{
       'Header':Header,
       Goods
+    },
+    // 计算属性
+    computed:{
+      // 动态计算出全选的状态 是true 还是 false
+      fullState(){
+        // every  判断的条件都为真 返回真,有一个item为假返回假
+        return this.list.every(item=>item.goods_state);
+      }
     },
     // 生命周期函数 
     created(){
