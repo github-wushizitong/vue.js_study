@@ -16,6 +16,7 @@
         <Footer 
           :isFull="fullState"
           :amout="amt"
+          :all="total"
           @footer_full_state="getFooterFullState"
           ></Footer>
     <h1>App 根组件</h1>
@@ -30,6 +31,8 @@
   import Goods from '@/components/Goods/Goods.vue'
   import Footer from '@/components/Footer/Footer.vue'
 
+  // 导入 EventBus.js 文件用来兄弟组件之间的数据共享
+  import bus from '@/components/EventBus.js'
   export default {
     data(){
       return {
@@ -84,11 +87,24 @@
       amt(){
         // 先 filter 过滤,再 reduce 累加
         return this.list.filter(item=>item.goods_state).reduce((total,item)=> total += item.goods_price * item.goods_count ,0);
+      },
+      // 已经勾选商品的总数量
+      total(){
+        return this.list.filter(item=>item.goods_state).reduce((t,item)=> t += item.goods_count,0)
       }
     },
     // 生命周期函数 
     created(){
       this.initCartList();
+      bus.$on('share',value => {
+        console.log(value);
+        this.list.some(item=>{
+          if(item.id === value.id){
+            item.goods_count = value.value;
+          }
+          return true;
+        })
+      })
     }
 
   }

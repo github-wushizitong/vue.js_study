@@ -9,11 +9,11 @@
     <!-- 中间的合计 -->
     <div>
       <span>合计：</span>
-      <span class="total-price">￥{{ 0 }}</span>
+      <span class="total-price">￥{{ amout }}</span>
     </div>
 
     <!-- 结算按钮 -->
-    <button type="button" class="btn btn-primary btn-settle">结算（{{ amout }}）</button>
+    <button type="button" class="btn btn-primary btn-settle">结算（{{ all }}）</button>
   </div>
 </template>
 
@@ -32,6 +32,11 @@ export default {
     },
     // 商品总价
     amout:{
+      type:Number,
+      default:0
+    },
+    // 商品总数量
+    all:{
       type:Number,
       default:0
     }
