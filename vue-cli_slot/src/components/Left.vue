@@ -8,7 +8,7 @@
       如果省略了 solt 的 name 属性,则有一个默认叫做 default 的name属性值
 
      -->
-    <slot name="default"></slot>
+    <slot name="default"><h1>这是 Left.vue组件,的name属性为default的   默认内容</h1></slot>
   </div>
 </template>
 
