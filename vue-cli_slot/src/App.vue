@@ -16,10 +16,12 @@
             <p>艰难苦恨繁霜鬓，潦倒新停浊酒杯。</p>
           </div>
         </template>
-        <template #author>
+        <!-- 通过 v-slot: 指令绑定属性来接收 子组件Article.vue 中作用域插槽传递过来的值 -->
+        <template #author="scope">
           <div>
             杜甫(唐代)
           </div>
+          <p>{{scope.msg}}</p>
         </template>
       </Article>
     </div>
