@@ -3,11 +3,14 @@ import Vue from 'vue'
 // 导入 App.vue 跟组件, 将来要把 APP.vue 中的模板结构,渲染到 HTML页面中 
 // import App from './App.vue'
 import App from '@/App.vue'
+//  导入axios 第三方模块 ,用来发http请求
+import axios from 'axios'
 
-
-// 导入全局组件
-
-// 注册全局组件,参数1:注册名称,参数2:需要被全局注册导入的组件名称
+// 配置 请求地址 的根路径
+axios.defaults.baseURL='http://www.liulongbin.top:3006'
+// 把axios 挂载到 Vue 原型对象上,缺点:不利于 API 接口的复用
+// 把axios 挂载到 Vue.prototype 上,供每个 .vue 组件实例可以直接使用
+Vue.prototype.$http = axios;
 
 
 /**
