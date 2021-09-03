@@ -100,7 +100,7 @@ export default {
     // 点击按钮 改变 h2 文本颜色
     change_h2_text_color(){
       this.color = "yellow"
-    }
+    } 
   },
   components: {
     Header,
@@ -124,7 +124,7 @@ export default {
       },
       update(el,binding){
         // 默认颜色
-        el.style.color = 'greenYellow';
+        el.style.color = 'blue';
         // 当元素使用 自定义指令时,传入参数,参数就是 自定义指令渲染的颜色
         el.style.color = binding.value;
       }
