@@ -13,7 +13,7 @@
       :state="item.goods_state"
       @state-change="getNewState"
     >
-      <Counter></Counter>
+      <Counter :num="item.goods_count" @num-change="getNewNum(item,$event)"></Counter>
     </Goods>
 
     <!-- Footer 区域 -->
@@ -84,6 +84,11 @@ export default {
     // 接收 Footer 子组件传递过来的全选按钮的状态
     getFullState(val) {
       this.list.forEach(item => (item.goods_state = val))
+    },
+    // 通过绑定自定义事件 来接收子组件 Counter.vue传递过来的参数
+    getNewNum(item,event){
+      // console.log(event);
+      item.goods_count = event;
     }
   },
   components: {
