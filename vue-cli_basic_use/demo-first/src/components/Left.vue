@@ -1,5 +1,7 @@
 <template>
     <div class="left-components">
+        <h3>Left 组件------{{count}}</h3>
+        <button @click="count += 1">+1</button>
     </div>
 </template>
 
@@ -7,6 +9,7 @@
     export default {
         data(){
             return {
+                count:0
             }
         },
         methods: {

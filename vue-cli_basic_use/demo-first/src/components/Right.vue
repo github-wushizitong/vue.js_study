@@ -19,6 +19,7 @@
     .right-components{
         padding:0 20px 20px;
         background-color:slateblue;
+        min-height: 250px;
         flex:1;
     }
 </style>
