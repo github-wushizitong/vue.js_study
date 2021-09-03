@@ -9,7 +9,13 @@
             当组件'被缓存'时,会自动触发组件的'deactivated'生命周期函数
             当组件'被激活'时,会自动触发组件的'activated'生命周期函数
      -->
-    <keep-alive>
+     <!-- 
+       Props：
+          include - 字符串或正则表达式。只有名称匹配的组件会被缓存。
+          exclude - 字符串或正则表达式。任何名称匹配的组件都不会被缓存。
+          max - 数字。最多可以缓存多少组件实例。
+      -->
+    <keep-alive include="Left,Right">
       <!-- 使用 vue.js  内置组件占位符 渲染组件 -->
       <!-- is 属性值 表示要渲染的子组件的名字 -->
       <component :is="comName"></component>
