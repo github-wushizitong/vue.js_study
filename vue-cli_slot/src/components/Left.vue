@@ -1,6 +1,14 @@
 <template>
   <div class="left-container">
     <h3>Left 组件</h3>
+    <hr>
+    <!-- 插槽占位,用来填充App.vue 被组件包裹的p标签 -->
+    <!-- 
+      vue官方规定:每一个solt插槽,必须有一个 name 属性
+      如果省略了 solt 的 name 属性,则有一个默认叫做 default 的name属性值
+
+     -->
+    <slot name="default"></slot>
   </div>
 </template>
 
