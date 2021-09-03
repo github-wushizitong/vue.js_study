@@ -17,11 +17,13 @@
           </div>
         </template>
         <!-- 通过 v-slot: 指令绑定属性来接收 子组件Article.vue 中作用域插槽传递过来的值 -->
-        <template #author="scope">
+        <!-- 也可以通过 对象解构的方式 来接收 子组件Article.vue 中的作用域插槽传递过来的值 -->
+        <!-- <template #author="scope"> -->
+        <template #author="{msg}">
           <div>
             杜甫(唐代)
           </div>
-          <p>{{scope.msg}}</p>
+          <p>{{msg}}</p>
         </template>
       </Article>
     </div>
