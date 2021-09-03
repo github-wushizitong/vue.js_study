@@ -9,7 +9,15 @@
     <router-link to="/home">首页</router-link>
     <!-- 动态路由连接 -->
     <router-link to="/movie/1">电影1</router-link>
-    <router-link to="/movie/2">电影2</router-link>
+    <!-- 
+      注意: 
+        1,在hash地址中, / 后面的参数项,叫做"路径参数"
+        2,在路由参数对象中,需要使用 this.$route.params来访问路径参数
+        3,在hash地址中, ? 后面的参数项,叫做"查询参数"
+        4,在路由参数对象中,需要使用this.$route.query来访问查询参数
+        5,注意:在this.$route中,path 路径部分,fullPath 是完整的地址
+     -->
+    <router-link to="/movie/2?name=zs&age=20">电影2</router-link>
     <router-link to="/movie/3">电影3</router-link>
     <router-link to="/about">关于</router-link>
     <hr />
