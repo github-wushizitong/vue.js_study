@@ -19,7 +19,6 @@ const router = new VueRouter({
     // 路由规则
     // 路由重定向
     { path: "/", redirect: "/home" },
-    { path: "/about", redirect: "/about/tab1" },
     {
       // 访问的路径
       path: "/home",
@@ -29,10 +28,15 @@ const router = new VueRouter({
     {
       path: "/about",
       component: About,
+      // 子级路由重定向
+      redirect: "/about/tab1",
       // 子路由
       // 注意:子路由不需要加 / 符号
       children: [
+        // 默认子路由: 如果children 数组中,某个路由规则的 path 的值为空字符串,则默认渲染该组件,也就不需要重定向了,不过子路由连接的to里面直接写父级路由路径就可以了
+        // 默认子路由有个bug,如果在地址栏中输入对应的自己路由路径,不会渲染该组件
         { path: "tab1", component: Tab1 },
+        // { path: "", component: Tab1 },
         { path: "tab2", component: Tab2 }
       ]
     },
