@@ -1,5 +1,7 @@
 <template>
   <div class="app-container">
+    <h1 v-color>App 跟组件</h1>
+    <hr>
     <!-- Header 头部区域 -->
     <Header title="购物车案例"></Header>
     <!-- 循环渲染每一个商品的信息 -->
@@ -96,6 +98,17 @@ export default {
     Goods,
     Footer,
     Counter
+  },
+  // 私有自定义指令
+  directives:{
+    // 定义名为 v-color 的自定义指令,指向一个配置对象
+    color:{
+      // 当指令第一次被绑定到元素上的时候,会立即触发 下面的 bind 函数
+      // 形参中的el表示当前指令所绑定到的 DMO 对象
+      bind(el){
+        el.style.color = 'blue';
+      }
+    }
   }
 }
 </script>
