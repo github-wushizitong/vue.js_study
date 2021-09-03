@@ -2,7 +2,27 @@
   <div class="app-container">
     <h1>App 根组件</h1>
     <hr />
-
+    <div class="article-box">
+      <Article>
+        <!-- 向 子组件 Article.vue中指定的具名插槽中插入内容 -->
+        <template #title>
+          <h1>登高</h1>
+        </template>
+        <template #content>
+          <div>
+            <p>风急天高猿啸哀，渚清沙白鸟飞回.</p>
+            <p>无边落木萧萧下，不尽长江滚滚来。</p>
+            <p>万里悲秋常作客，百年多病独登台。</p>
+            <p>艰难苦恨繁霜鬓，潦倒新停浊酒杯。</p>
+          </div>
+        </template>
+        <template #author>
+          <div>
+            杜甫(唐代)
+          </div>
+        </template>
+      </Article>
+    </div>
     <div class="box">
       <!-- 渲染 Left 组件和 Right 组件 -->
       <Left>
@@ -24,9 +44,11 @@
 <script>
 // 导入子组件
 import Left from '@/components/Left.vue'
+import Article from '@/components/Article.vue'
 export default {
   components:{
-    'Left':Left
+    'Left':Left,
+    Article
   }
 }
 </script>
