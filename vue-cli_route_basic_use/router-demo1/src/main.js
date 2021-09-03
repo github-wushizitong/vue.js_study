@@ -1,5 +1,5 @@
 import Vue from "vue"
-import App from "./App.vue"
+import App from "./App2.vue"
 
 // 导入 bootstrap 样式
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "@/assets/global.css"
 
 // 导入 router 实例对象
-import router from "@/routet/index.js"
+import router from "@/router/index.js"
 
 Vue.config.productionTip = false
 
