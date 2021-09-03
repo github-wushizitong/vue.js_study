@@ -1,13 +1,14 @@
 <template>
-  <div class="header-container">{{title}}</div>
+  <div class="header-container">{{ title }}</div>
 </template>
 
 <script>
 export default {
-  props:{
-    title:{
-      type:String,
-      default:''
+  props: {
+    // 声明 title 自定义属性，允许使用者自定义标题的内容
+    title: {
+      default: '',
+      type: String
     }
   }
 }

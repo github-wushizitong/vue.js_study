@@ -2,14 +2,14 @@
   <div class="footer-container">
     <!-- 左侧的全选 -->
     <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" id="cbFull" :checked="isFull" @change="getFullState"/>
+      <input type="checkbox" class="custom-control-input" id="cbFull" :checked="isfull" @change="fullChange" />
       <label class="custom-control-label" for="cbFull">全选</label>
     </div>
 
     <!-- 中间的合计 -->
     <div>
       <span>合计：</span>
-      <span class="total-price">￥{{ amout }}</span>
+      <span class="total-price">￥{{ amount.toFixed(2) }}</span>
     </div>
 
     <!-- 结算按钮 -->
@@ -19,34 +19,27 @@
 
 <script>
 export default {
-  data(){
-    return {
+  props: {
+    // 全选的状态
+    isfull: {
+      type: Boolean,
+      default: true
+    },
+    // 总价格
+    amount: {
+      type: Number,
+      default: 0
+    },
+    // 已勾选的商品的总数量
+    all: {
+      type: Number,
+      default: 0
     }
   },
-  // 父组件传递过来的参数
-  props:{
-    // 全选状态
-    isFull:{
-      type:Boolean,
-      required:true
-    },
-    // 商品总价
-    amout:{
-      type:Number,
-      default:0
-    },
-    // 商品总数量
-    all:{
-      type:Number,
-      default:0
-    }
-  },
-  methods:{
-    // 获取input复选框的选中状态
-    getFullState(e){
-      // console.log(e.target.checked);
-      // 通过自定义事件向父组件传递参数
-      this.$emit('footer_full_state',{fullState:e.target.checked});
+  methods: {
+    // 监听到了全选的状态变化
+    fullChange(e) {
+      this.$emit('full-change', e.target.checked)
     }
   }
 }

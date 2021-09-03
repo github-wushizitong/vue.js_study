@@ -3,8 +3,8 @@
     <!-- 左侧图片 -->
     <div class="thumb">
       <div class="custom-control custom-checkbox">
-        <!-- 复选框   为了避免组件列表复用的冲突,建议更改 id属性为动态属性-->
-        <input type="checkbox" class="custom-control-input" :id="'cb' + id" :checked="state" @change="stateChange"/>
+        <!-- 复选框 -->
+        <input type="checkbox" class="custom-control-input" :id="'cb' + id" :checked="state" @change="stateChange" />
         <label class="custom-control-label" :for="'cb' + id">
           <!-- 商品的缩略图 -->
           <img :src="pic" alt="" />
@@ -14,75 +14,56 @@
     <!-- 右侧信息区域 -->
     <div class="goods-info">
       <!-- 商品标题 -->
-      <h6 class="goods-title">{{title}}</h6>
+      <h6 class="goods-title">{{ title }}</h6>
       <div class="goods-info-bottom">
         <!-- 商品价格 -->
-        <span class="goods-price">￥{{price}}</span>
+        <span class="goods-price">￥{{ price }}</span>
         <!-- 商品的数量 -->
-        <Counter 
-        :counter="count"
-        :id="id"
-        ></Counter>
+        <!-- 用来放置 App.vue组件中Goods标签传过来的插槽 -->
+        <slot></slot>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  // 导入子组件 Count.vue
-  import Counter from '@/components/Counter/Counter.vue'
 export default {
-  // 接收父组件 传递过来的自定义属性的值(参数)
-  props:{
-    // 商品id
-    id:{
-      type:Number,
-      required:true
+  props: {
+    // 商品的 id
+    // 为啥在这里要封装一个 id 属性呢？
+    // 原因:将来,子组件中商品的勾选状态变化之后, 需要通过子 -> 父的形式,
+    // 通知父组件根据 id 修改对应商品的勾选状态。
+    id: {
+      required: true,
+      type: Number
     },
-    // 商品标题
-    title:{
-      type:String,
-      default:''
+    // 要渲染的商品的标题
+    title: {
+      default: '',
+      type: String
     },
-    // 商品图片
-    pic:{
-      type:String,
-      default:''
+    // 要渲染的商品的图片
+    pic: {
+      default: '',
+      type: String
     },
-    // 商品价格
-    price:{
-      type:Number,
-      default:0
+    // 商品的单价
+    price: {
+      default: 0,
+      type: Number
     },
-    // 商品选中状态
-    state:{
-      type:Boolean,
-      default:false
-    },
-    // 向子组件Counter.vue 传递的商品数量
-    count:{
-      type:Number,
-      default:0
+    // 商品的勾选状态
+    state: {
+      default: true,
+      type: Boolean
     }
   },
-  // 挂载子组件
-  components:{
-    Counter
-  },
-  methods:{
-    stateChange(e){
-      // 打印事件对象
-      // console.log(e);
-      // 打印事件对象的 checked属性的值
-      // console.log(e.target.checked);
-      // 打印 当前组件的 实例对象
-      // console.log(this);
-      // 打印 当前 组件实例对象 下的 id属性
-      // console.log(this.id);
-      
-
-      // 通过自定义事件 向父组件传递参数
-      this.$emit('state_change',{id:this.id,GoodsCheckboxChecked:e.target.checked})
+  methods: {
+    // 只要复选框的选中状态发生了变化，就会调用这个处理函数
+    stateChange(e) {
+      const newState = e.target.checked
+      // 触发自定义事件
+      this.$emit('state-change', { id: this.id, value: newState })
     }
   }
 }
