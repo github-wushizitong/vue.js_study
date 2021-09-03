@@ -41,7 +41,8 @@ const router = new VueRouter({
       ]
     },
     // :id 为动态路由连接路径,接收 router-link 路径后面的动态路径
-    { path: "/movie/:id", component: Movie }
+    // 路由规则传参, 加上 props:true 可以把 :id 接收router-link 的动态路由参数,传递给该组件的 props节点
+    { path: "/movie/:id", component: Movie, props: true }
   ]
 })
 
