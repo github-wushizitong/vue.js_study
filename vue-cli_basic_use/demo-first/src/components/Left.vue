@@ -7,6 +7,9 @@
 
 <script>
     export default {
+        // 组件的注册名称:以标签的形式,把注册号的组件,渲染和使用到页面结构中
+        // 组件声明时候的name节点:结合<keep-alive></keep-alive>标签实现组件缓存功能,以及在调试工具中看到组件的name名称
+        name:'Left',
         data(){
             return {
                 count:0
