@@ -3,7 +3,8 @@ import App from './App.vue'
 // 导入 bootstrap 样式表
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-Vue.config.productionTip = false
+// vue.js 运行项目时候 浏览器调试工具 Cconsole 的提示文本是否显示
+Vue.config.productionTip = true
 // 全局自定义指令
 Vue.directive('color',{
       // bind 生命周期函数钩子：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置。
