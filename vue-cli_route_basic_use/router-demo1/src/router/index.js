@@ -40,7 +40,8 @@ const router = new VueRouter({
         { path: "tab2", component: Tab2 }
       ]
     },
-    { path: "/movie", component: Movie }
+    // :id 为动态路由连接路径,接收 router-link 路径后面的动态路径
+    { path: "/movie/:id", component: Movie }
   ]
 })
 
