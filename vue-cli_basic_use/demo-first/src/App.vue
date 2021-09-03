@@ -19,7 +19,7 @@
       <!-- 使用 vue.js  内置组件占位符 渲染组件 -->
       <!-- is 属性值 表示要渲染的子组件的名字 -->
       <component :is="comName"></component>
-    
+
     </keep-alive>
 
   </div>
@@ -34,7 +34,7 @@
     data(){
       return {
         // 要展示组件的名字
-        comName:'Left'
+        comName:'Left' 
       }
     },
     methods: {
