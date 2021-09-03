@@ -1,6 +1,7 @@
 <template>
   <div class="app-container">
     <h1 v-color>App 跟组件</h1>
+    <h2 v-color="color">App 私有自定义指令 </h2>
     <hr>
     <!-- Header 头部区域 -->
     <Header title="购物车案例"></Header>
@@ -36,7 +37,9 @@ export default {
   data() {
     return {
       // 用来存储购物车的列表数据，默认为空数组
-      list: []
+      list: [],
+      // 颜色
+      color:'red'
     }
   },
   // 计算属性
@@ -105,8 +108,12 @@ export default {
     color:{
       // 当指令第一次被绑定到元素上的时候,会立即触发 下面的 bind 函数
       // 形参中的el表示当前指令所绑定到的 DMO 对象
-      bind(el){
+      bind(el,binding){
+        console.log(el,binding);
+        // 默认颜色
         el.style.color = 'blue';
+        // 当元素使用 自定义指令时,传入参数,参数就是 自定义指令渲染的颜色
+        el.style.color = binding.value;
       }
     }
   }
