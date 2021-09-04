@@ -42,6 +42,7 @@ const router = new VueRouter({
   ]
 })
 // 前置路由导航守卫
+// 注意：前置路由导航守卫，不会把二级路由也守卫了，
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem("token")
   if (to.path === "/home") {
