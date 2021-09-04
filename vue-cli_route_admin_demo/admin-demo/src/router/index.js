@@ -23,6 +23,18 @@ const router = new VueRouter({
     { path: "/home", component: MyHome }
   ]
 })
+// 前置路由导航守卫
+router.beforeEach((to, from, next) => {
+  if (to.path === "/home") {
+    if (token) {
+      next()
+    } else {
+      next("/login")
+    }
+  } else {
+    next()
+  }
+})
 
 // 暴露 router 实例对象
 export default router
