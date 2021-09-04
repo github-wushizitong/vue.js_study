@@ -3,6 +3,7 @@
     <h3>Home 组件</h3>
     <hr />
     <button @click="goto_dianying1">跳转到 电影1页面</button>
+    <router-link to="/main">访问后台主页</router-link>
   </div>
 </template>
 
