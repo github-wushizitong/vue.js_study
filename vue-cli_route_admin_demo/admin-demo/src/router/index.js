@@ -13,6 +13,7 @@ import MyGoods from "@/components/menus/MyGoods"
 import MyOrders from "@/components/menus/MyOrders"
 import MyRights from "@/components/menus/MyRights"
 import MySettings from "@/components/menus/MySettings"
+import MyUserDetail from "@/components/user/MyUserDetail"
 
 // 把vueRouter 配置为 Vue 的插件
 Vue.use(VueRouter)
@@ -34,7 +35,8 @@ const router = new VueRouter({
         { path: "goods", component: MyGoods },
         { path: "orders", component: MyOrders },
         { path: "rights", component: MyRights },
-        { path: "settings", component: MySettings }
+        { path: "settings", component: MySettings },
+        { path: "userdetail", component: MyUserDetail }
       ]
     }
   ]
