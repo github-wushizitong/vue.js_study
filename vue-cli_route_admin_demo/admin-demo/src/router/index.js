@@ -7,6 +7,7 @@ import VueRouter from "vue-router"
 
 // 导入组件,用来路由渲染
 import MyLogin from "@/components/MyLogin.vue"
+import MyHome from "@/components/MyHome.vue"
 
 // 把vueRouter 配置为 Vue 的插件
 Vue.use(VueRouter)
@@ -18,7 +19,8 @@ const router = new VueRouter({
     { path: "/", redirect: "/login" },
     // path : 访问的路径,
     // component : 访问路径对应要渲染的组件
-    { path: "/login", component: MyLogin }
+    { path: "/login", component: MyLogin },
+    { path: "/home", component: MyHome }
   ]
 })
 

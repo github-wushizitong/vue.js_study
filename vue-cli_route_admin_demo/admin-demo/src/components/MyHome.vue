@@ -1,22 +1,30 @@
 <template>
   <div class="home-container">
-    后台主页
+    <!-- 头部区域 -->
+    <MyHeader></MyHeader>
+    <!-- 页面主体区域 -->
+    <div class="home-main-box">
+      <!-- 左侧侧边栏 -->
+      <MyAside></MyAside>
+      <!-- 右侧内容主体区域 -->
+      <div class="home-main-body">123</div>
+    </div>
   </div>
 </template>
 
 <script>
 // 头部区域组件
-import MyHeader from './subcomponents/MyHeader.vue'
+import MyHeader from "./subcomponents/MyHeader.vue"
 // 左侧边栏组件
-import MyAside from './subcomponents/MyAside.vue'
+import MyAside from "./subcomponents/MyAside.vue"
 
 export default {
-  name: 'MyHome',
+  name: "MyHome",
   // 注册组件
   components: {
     MyHeader,
-    MyAside,
-  },
+    MyAside
+  }
 }
 </script>
 
