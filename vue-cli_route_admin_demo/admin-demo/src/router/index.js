@@ -36,7 +36,7 @@ const router = new VueRouter({
         { path: "orders", component: MyOrders },
         { path: "rights", component: MyRights },
         { path: "settings", component: MySettings },
-        { path: "userdetail", component: MyUserDetail }
+        { path: "userdetail/:id", component: MyUserDetail, props: true }
       ]
     }
   ]

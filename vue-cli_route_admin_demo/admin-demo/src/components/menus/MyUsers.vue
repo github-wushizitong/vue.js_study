@@ -21,7 +21,7 @@
           <td>{{ item.age }}</td>
           <td>{{ item.position }}</td>
           <td>
-            <router-link to="/home/userdetail">详情</router-link>
+            <router-link :to="'/home/userdetail/' + item.id">详情</router-link>
           </td>
         </tr>
       </tbody>
