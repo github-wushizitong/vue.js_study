@@ -1,12 +1,12 @@
 <template>
-  <h4>App 组件</h4>
+  <!-- 放置路由组件占位符 -->
+  <router-view></router-view>
 </template>
 
 <script>
 export default {
-  name: 'MyApp',
+  name: "MyApp"
 }
 </script>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
